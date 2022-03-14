@@ -1,4 +1,4 @@
-(ns for-clojure-solutions.003)
+(ns four-clojure-solutions.003)
 
 ;https://4clojure.oxal.org/#/problem/3
 

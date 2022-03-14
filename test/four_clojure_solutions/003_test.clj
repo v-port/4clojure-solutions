@@ -1,4 +1,4 @@
-(ns for-clojure-solutions.003-test
+(ns four-clojure-solutions.003-test
   (:require [clojure.test :refer :all]))
 
 (deftest question-003-test
