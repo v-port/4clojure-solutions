@@ -1,18 +1,20 @@
-(ns four-clojure-solutions.040)
+(ns four-clojure-solutions.041)
 
-; https://4clojure.oxal.org/#/problem/40
-; Write a function which separates the items of
-; a sequence by an arbitrary value.
-; Restrictions - interpose
+; https://4clojure.oxal.org/#/problem/41
+; Write a function which drops every nth item from a sequence.
 
 ;---------------------------------------------
 
-(defn interpose-v1 [sep coll]
-  (rest (interleave (repeat sep) coll)))
+(defn drop-every-nth [coll n]
+  (->> coll
+       (partition-all n)
+       (mapcat #(if (= (count %) n)
+                  (butlast %)
+                  %))))
 
 ;---------------------------------------------
 
 (comment
-  (= (interpose-v1 0 [1 2 3]) [1 0 2 0 3])
-  (= (apply str (interpose-v1 ", " ["one" "two" "three"])) "one, two, three")
-  (= (interpose-v1 :z [:a :b :c :d]) [:a :z :b :z :c :z :d]))
+  (= (drop-every-nth [1 2 3 4 5 6 7 8] 3) [1 2 4 5 7 8])
+  (= (drop-every-nth [:a :b :c :d :e :f] 2) [:a :c :e])
+  (= (drop-every-nth [1 2 3 4 5 6] 4) [1 2 3 5 6]))
