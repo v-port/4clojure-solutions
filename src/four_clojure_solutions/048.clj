@@ -1,19 +1,16 @@
-(ns four-clojure-solutions.047)
+(ns four-clojure-solutions.048)
 
-; https://4clojure.oxal.org/#/problem/047
+; https://4clojure.oxal.org/#/problem/048
 
-(contains? #{4 5 6} 4)
-(contains? [1 1 1 1 1] 4)
-(contains? {4 :a 2 :b} 4)
-(not (contains? [1 2 4] 3))
+;---------------------------------------------
+
+(= 6 (some #{2 7 6} [5 6 7 8]))
+(= 6 (some #(when (even? %) %) [5 6 7 8]))
 
 ;---------------------------------------------
 
 (comment
-  (contains? #{4 5 6} 4)
-  (not (contains? #{4 5 6} 7))
-  (contains? [1 1 1 1 1] 0)
-  (contains? [1 1 1 1 1] 4)
-  (not (contains? [1 1 1 1 1] 5))
-  (contains? {4 :a 2 :b} 4)
-  (not (contains? [1 2 4] 3)))
+  (= 6 (some #{2 7 6} [5 6 7 8]))
+  (= 6 (some #(when (even? %) %) [5 6 7 8]))
+  (some even? [1 2 3 4])
+  (nil? (some even? [1 3])))
